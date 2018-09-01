@@ -28,5 +28,10 @@ namespace Bomholt.PetShop.Core.ApplicationService.Services
         {
             return _PetRepo.GetAllPets().ToList();
         }
+
+        public bool UpdatePet(Pet updatedPet)
+        {
+            return _PetRepo.UpdatePet(updatedPet);
+        }
     }
 }

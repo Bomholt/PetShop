@@ -100,6 +100,26 @@ namespace Bomholt.PetShop.UI
             return dateTime;
         }
 
+        private int AskForInt(string q)
+        {
+            int number;
+            while (!int.TryParse(AskQuestion(q), out number))
+            {
+                Console.WriteLine("A number please!");
+            }
+            return number;
+        }
+
+        private double AskForDouble(string q)
+        {
+            double number;
+            while (!double.TryParse(AskQuestion(q), out number))
+            {
+                Console.WriteLine("A double please!");
+            }
+            return number;
+        }
+
         private void PrintListOfPets(List<Pet> list)
         {
             Console.WriteLine("\nPESTS:\n");
@@ -112,6 +132,24 @@ namespace Bomholt.PetShop.UI
                 //Console.WriteLine("| {0,-20}| {1,-10}| {2,2}|", item.Name, item.Color, item.ID);
                 //Console.WriteLine("+---------------------+-----------+---+");
             }
+        }
+
+        public void UpdatePet()
+        {
+            Pet UpdatedPet = new Pet()
+            {
+                ID = AskForInt("Type the id of the pet you want to update"),
+                Name = AskQuestion("Type new Name Please:"),
+                Type = AskQuestion("Type new Type Please:"),
+                Color = AskQuestion("Type new Color Please:"),
+                Birthdate = AskForDate("Type pets birthdate:"),
+                Solddate = AskForDate("Type sold date"),
+                PreviousOwner = AskQuestion("Type Name of former owner Please:"),
+                Price = AskForDouble("Type in prize please:")
+                //Price = Convert.ToDouble(AskQuestion("Type in prize please:"))
+            };
+            bool success = _petService.UpdatePet(UpdatedPet);
+            Console.WriteLine(success?"Pet updated successsfuly":"No pet with that id found");
         }
     }
 }

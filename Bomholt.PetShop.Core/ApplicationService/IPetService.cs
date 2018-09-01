@@ -11,5 +11,6 @@ namespace Bomholt.PetShop.Core.ApplicationService
         List<Pet> GetAllPets();
         bool DeletePetById(int v);
         bool CreateNewPet(Pet newPet);
+        bool UpdatePet(Pet updatedPet);
     }
 }

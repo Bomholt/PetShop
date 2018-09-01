@@ -32,7 +32,6 @@ namespace Bomholt.PetShop.UI
                         //Console.WriteLine("You chose: Search Pets by Type");
                         break;
                     case 3:
-                        Console.WriteLine("You chose: Create a new Pet");
                         _logic.CreateNewPet();
                         break;
                     case 4:
@@ -40,6 +39,7 @@ namespace Bomholt.PetShop.UI
                         break;
                     case 5:
                         Console.WriteLine("You chose: Update a Pet");
+                        _logic.UpdatePet();
                         break;
                     case 6:
                         Console.WriteLine("You chose: Sort Pets By Price");

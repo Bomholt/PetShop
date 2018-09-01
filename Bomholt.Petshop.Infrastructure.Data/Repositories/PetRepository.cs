@@ -39,13 +39,14 @@ namespace Bomholt.Petshop.Infrastructure.Data.Repositories
                 {
                     DelPet = item;
                     success = true;
+                    break;
                 }
             }
-            if (DelPet != null)
+            if (DelPet == null)
             {
-                tempList.Remove(DelPet);
+                return false;
             }
-            
+            tempList.Remove(DelPet);
             _pets = tempList;
             return success;
         }
@@ -55,6 +56,33 @@ namespace Bomholt.Petshop.Infrastructure.Data.Repositories
             var temp = _pets.ToList();
             temp.Add(newPet);
             _pets = temp;
+            return true;
+        }
+
+        public bool UpdatePet(Pet updatedPet)
+        {
+            var tempList = _pets.ToList();
+            Pet PetUpdate = null;
+            foreach (var item in tempList)
+            {
+                if (item.ID == updatedPet.ID)
+                {
+                    PetUpdate = item;
+                    break;
+                }
+            }
+            if (PetUpdate == null)
+            {
+                return false;
+            }
+            PetUpdate.Name = updatedPet.Name;
+            PetUpdate.Type = updatedPet.Type;
+            PetUpdate.Color = updatedPet.Color;
+            PetUpdate.PreviousOwner = updatedPet.PreviousOwner;
+            PetUpdate.Birthdate = updatedPet.Birthdate;
+            PetUpdate.Solddate = updatedPet.Solddate;
+            PetUpdate.Price = updatedPet.Price;
+            _pets = tempList;
             return true;
         }
     }
