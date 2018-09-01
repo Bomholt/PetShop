@@ -8,30 +8,23 @@ namespace Bomholt.PetShop.UI
 {
     public class RunProgram : IRunProgram
     {
-        private ILogic logic;
+        private ILogic _logic;
 
         public RunProgram(ILogic logic)
         {
-            this.logic = logic;
+            this._logic = logic;
         }
         public void Run()
         {
-            Console.WriteLine("VIDEO CONSOLE MENU");
-        //Show list of choices(*Optional, Pure UI, Add one choice at a time)
-        //Show list of all Pets
-        //Search Pets by Type(Cat, Dog, Goat etc.maybe as Enum) * Yes Goats can be pets :D
-        //Create a new Pet
-        //Delete Pet
-        //Update a Pet
-        //Sort Pets By Price
-        //Get 5 cheapest available Pets
+            Console.WriteLine("PETSHOP CONSOLE MENU");
+
             bool on = true;
             do
             {
                 switch (PrintMenu())
                 {
                     case 1:
-                        Console.WriteLine("You chose: ");
+                        _logic.ShowAllPests();
                         break;
                     case 2:
                         Console.WriteLine("You chose: Search Pets by Type");
@@ -52,7 +45,7 @@ namespace Bomholt.PetShop.UI
                         Console.WriteLine("You chose: Get 5 cheapest available Pets");
                         break;
                     case 8:
-                         logic.Exit();
+                         _logic.Exit();
                         on = false;
                         break;
                 }

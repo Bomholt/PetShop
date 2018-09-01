@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bomholt.PetShop.Core\Bomholt.PetShop.Core.csproj" />
+    <ProjectReference Include="..\Bomholt.Petshop.Infrastructure.Data\Bomholt.Petshop.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
 </Project>

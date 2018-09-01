@@ -1,27 +1,30 @@
 ﻿using Bomholt.PetShop.Core.DomainService;
 using Bomholt.PetShop.Core.Entities;
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bomholt.Petshop.Infrastructure.Data.Repositories
 {
-    class PetRepository : IPetRepository
+    public class PetRepository : IPetRepository
 
     {
         private static int id = 1;
-        private List<Pet> _pets = new List<Pet>();
-
+        public static IEnumerable<Pet> _pets = new List<Pet>();
+        //Initislizing list in teh constructor
         public PetRepository()
         {
-            _pets.Add(new Pet() { Name = "Iben", Color = "Black" });
-            _pets.Add(new Pet() { Name = "Lars", Color = "Pink" });
-            _pets.Add(new Pet() { Name = "Misser", Color = "White" });
-            _pets.Add(new Pet() { Name = "Garfield", Color = "Orange" });
+            var temp = _pets.ToList();
+            temp.Add(new Pet() { Name = "Iben",Type = "Stray", Color = "Black", Birthdate = new DateTime(2011,05,15), PreviousOwner = "Hans Hansen", Price = 100 , ID = id++ });
+            temp.Add(new Pet() { Name = "Lars", Type = "Pecker", Color = "Pink", Birthdate = new DateTime(2017, 11, 22), PreviousOwner = "Birthe Hansen", Price = 1000, ID = id++ });
+            temp.Add(new Pet() { Name = "Misser", Type = "Snoop", Color = "White", Birthdate = new DateTime(2015, 01, 09), PreviousOwner = "Hans Ipsen", Price = 150.5, ID = id++ });
+            temp.Add(new Pet() { Name = "Garfield", Type = "Fancy", Color = "Orange", Birthdate = new DateTime(2018, 09, 05), PreviousOwner = "Jens Jensen", Price = 1559.95, ID = id++ });
+            _pets = temp;
         }
 
         public IEnumerable<Pet> GetAllPets()
         {
-            FakeDb.
+            
             return _pets;
         }
     }

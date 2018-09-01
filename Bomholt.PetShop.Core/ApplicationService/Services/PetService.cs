@@ -5,9 +5,14 @@ using Bomholt.PetShop.Core.Entities;
 
 namespace Bomholt.PetShop.Core.ApplicationService.Services
 {
-    class PetService : IPetService
+    public class PetService : IPetService
     {
         private IPetRepository _PetRepo;
+
+        public PetService(IPetRepository PetRepo)
+        {
+            _PetRepo = PetRepo;
+        }
 
         public List<Pet> GetAllPets()
         {
