@@ -11,7 +11,8 @@ namespace Bomholt.PetShop.UI.InterF
         void Exit();
         void DeletePetById();
         void CreateNewPet();
-        void Test();
+        void DateTimeTest();
         void UpdatePet();
+        void SearchPetsByType();
     }
 }

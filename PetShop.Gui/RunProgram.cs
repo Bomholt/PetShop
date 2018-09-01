@@ -27,9 +27,7 @@ namespace Bomholt.PetShop.UI
                         _logic.ShowAllPests();
                         break;
                     case 2:
-                        Console.WriteLine("You chose: Test DateTime");
-                        _logic.Test();
-                        //Console.WriteLine("You chose: Search Pets by Type");
+                        _logic.SearchPetsByType();
                         break;
                     case 3:
                         _logic.CreateNewPet();
@@ -38,7 +36,6 @@ namespace Bomholt.PetShop.UI
                         _logic.DeletePetById();
                         break;
                     case 5:
-                        Console.WriteLine("You chose: Update a Pet");
                         _logic.UpdatePet();
                         break;
                     case 6:

@@ -54,6 +54,7 @@ namespace Bomholt.Petshop.Infrastructure.Data.Repositories
         public bool CreateNewPet(Pet newPet)
         {
             var temp = _pets.ToList();
+            newPet.ID = id++;
             temp.Add(newPet);
             _pets = temp;
             return true;

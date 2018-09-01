@@ -17,7 +17,7 @@ namespace Bomholt.PetShop.UI
             _petService = petService;
         }
 
-        public void Test()
+        public void DateTimeTest()
         {
             DateTime dateTime;
             while (!DateTime.TryParse(AskQuestion("Type In DateTime"), out dateTime))
@@ -31,7 +31,7 @@ namespace Bomholt.PetShop.UI
 
         public void CreateNewPet()
         {
-
+            Console.WriteLine("You chose: Create a new Pet");
             Pet newPet = new Pet()
             {
                 Name = AskQuestion("Type Name Please:"),
@@ -47,23 +47,24 @@ namespace Bomholt.PetShop.UI
 
         public void DeletePetById()
         {
-            int petId;
-            string q = "Type the id of the pet to delete:";
+            Console.WriteLine("You chose: Delete a Pet");
+            //OneLiner!!!
+            Console.WriteLine( _petService.DeletePetById(AskForInt("Type the id of the pet to delete:"))? "\nThe Pet was successfully deleted!" : "\nNo Pet with that id found!");
 
-            while (!int.TryParse(AskQuestion(q), out petId))
-            {
-                Console.WriteLine("A number please!");
-            }
-            bool Succes = _petService.DeletePetById(petId);
-            if (Succes)
-            {
-                Console.WriteLine("\nThe Pet was successfully deleted!");
-            }
-            else
-            {
-                Console.WriteLine("\nNo Pet with that id found!");
-            }
-            
+            //int petId;
+            //while (!int.TryParse(AskQuestion("Type the id of the pet to delete:"), out petId))
+            //{
+            //    Console.WriteLine("A number please!");
+            //}
+            //bool Succes = _petService.DeletePetById(petId);
+            //if (Succes)
+            //{
+            //    Console.WriteLine("\nThe Pet was successfully deleted!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("\nNo Pet with that id found!");
+            //}
         }
 
         public void Exit()
@@ -80,7 +81,6 @@ namespace Bomholt.PetShop.UI
         {
             var list = _petService.GetAllPets();
             PrintListOfPets(list);
-
         }
 
         private string AskQuestion(string quest)
@@ -136,6 +136,7 @@ namespace Bomholt.PetShop.UI
 
         public void UpdatePet()
         {
+            Console.WriteLine("You chose: Update a Pet");
             Pet UpdatedPet = new Pet()
             {
                 ID = AskForInt("Type the id of the pet you want to update"),
@@ -146,10 +147,24 @@ namespace Bomholt.PetShop.UI
                 Solddate = AskForDate("Type sold date"),
                 PreviousOwner = AskQuestion("Type Name of former owner Please:"),
                 Price = AskForDouble("Type in prize please:")
-                //Price = Convert.ToDouble(AskQuestion("Type in prize please:"))
             };
             bool success = _petService.UpdatePet(UpdatedPet);
             Console.WriteLine(success?"Pet updated successsfuly":"No pet with that id found");
+        }
+
+        public void SearchPetsByType()
+        {
+            Console.WriteLine("You chose: Search Pets by Type");
+            string SearchType = AskQuestion("What type do you want to search for?");
+            List<Pet> PetByType = _petService.SearchPetsByType(SearchType);
+            if (PetByType.Count==0)
+            {
+                Console.WriteLine("No pets of that type was found");
+            }
+            else
+            {
+                PrintListOfPets(PetByType);
+            }
         }
     }
 }
