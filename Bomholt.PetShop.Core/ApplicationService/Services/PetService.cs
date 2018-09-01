@@ -14,6 +14,11 @@ namespace Bomholt.PetShop.Core.ApplicationService.Services
             _PetRepo = PetRepo;
         }
 
+        public bool CreateNewPet(Pet newPet)
+        {
+           return _PetRepo.CreateNewPet(newPet);
+        }
+
         public bool DeletePetById(int v)
         {
             return _PetRepo.DeletePetById(v);

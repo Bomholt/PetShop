@@ -27,13 +27,15 @@ namespace Bomholt.PetShop.UI
                         _logic.ShowAllPests();
                         break;
                     case 2:
-                        Console.WriteLine("You chose: Search Pets by Type");
+                        Console.WriteLine("You chose: Test DateTime");
+                        _logic.Test();
+                        //Console.WriteLine("You chose: Search Pets by Type");
                         break;
                     case 3:
                         Console.WriteLine("You chose: Create a new Pet");
+                        _logic.CreateNewPet();
                         break;
                     case 4:
-                        Console.WriteLine("You chose: Delete Pet");
                         _logic.DeletePetById();
                         break;
                     case 5:

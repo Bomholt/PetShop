@@ -17,11 +17,40 @@ namespace Bomholt.PetShop.UI
             _petService = petService;
         }
 
+        public void Test()
+        {
+            DateTime dateTime;
+            while (!DateTime.TryParse(AskQuestion("Type In DateTime"), out dateTime))
+            {
+                Console.WriteLine("WRONG!!!!");
+            }
+            Console.WriteLine("DateTime: {0}", dateTime);
+
+            //bool TryParse(string s, out DateTime result);
+        }
+
+        public void CreateNewPet()
+        {
+
+            Pet newPet = new Pet()
+            {
+                Name = AskQuestion("Type Name Please:"),
+                Type = AskQuestion("Type Type Please:"),
+                Color = AskQuestion("Type Color Please:"),
+                Birthdate = AskForDate("Type pets birthdate:"),
+                Solddate = AskForDate("Type sold date"),
+                PreviousOwner = AskQuestion("Type Name of former owner Please:"),
+                Price = Convert.ToDouble(AskQuestion("Type in prize please:"))
+            };
+            bool success = _petService.CreateNewPet(newPet);
+        }
+
         public void DeletePetById()
         {
             int petId;
-            Console.Write("\nType the id of the pet to delete: ");
-            while (!int.TryParse(Console.ReadLine(), out petId))
+            string q = "Type the id of the pet to delete:";
+
+            while (!int.TryParse(AskQuestion(q), out petId))
             {
                 Console.WriteLine("A number please!");
             }
@@ -52,6 +81,23 @@ namespace Bomholt.PetShop.UI
             var list = _petService.GetAllPets();
             PrintListOfPets(list);
 
+        }
+
+        private string AskQuestion(string quest)
+        {
+            Console.Write(" {0} ", quest);
+            return Console.ReadLine();
+        }
+
+        public DateTime AskForDate(string q)
+        {
+            Console.WriteLine(q);
+            DateTime dateTime;
+            while (!DateTime.TryParse(AskQuestion("Type In Date in format: DD/MM/YY "), out dateTime))
+            {
+                Console.WriteLine("WRONG!!!!");
+            }
+            return dateTime;
         }
 
         private void PrintListOfPets(List<Pet> list)

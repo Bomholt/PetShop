@@ -49,5 +49,13 @@ namespace Bomholt.Petshop.Infrastructure.Data.Repositories
             _pets = tempList;
             return success;
         }
+
+        public bool CreateNewPet(Pet newPet)
+        {
+            var temp = _pets.ToList();
+            temp.Add(newPet);
+            _pets = temp;
+            return true;
+        }
     }
 }
