@@ -13,5 +13,6 @@ namespace Bomholt.PetShop.Core.ApplicationService
         bool CreateNewPet(Pet newPet);
         bool UpdatePet(Pet updatedPet);
         List<Pet> SearchPetsByType(string searchType);
+        List<Pet> SortPetsByPrice();
     }
 }

@@ -39,7 +39,7 @@ namespace Bomholt.PetShop.UI
                         _logic.UpdatePet();
                         break;
                     case 6:
-                        Console.WriteLine("You chose: Sort Pets By Price");
+                        _logic.SortPetsByPrice();
                         break;
                     case 7:
                         Console.WriteLine("You chose: Get 5 cheapest available Pets");

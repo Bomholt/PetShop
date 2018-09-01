@@ -36,6 +36,12 @@ namespace Bomholt.PetShop.Core.ApplicationService.Services
             //return AllPets.ToList();
         }
 
+        public List<Pet> SortPetsByPrice()
+        {
+            IEnumerable<Pet> AllPets = _PetRepo.GetAllPets();
+            return AllPets.OrderBy(pet => pet.Price).ToList();
+        }
+
         public bool UpdatePet(Pet updatedPet)
         {
             return _PetRepo.UpdatePet(updatedPet);
