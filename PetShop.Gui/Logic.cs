@@ -17,6 +17,26 @@ namespace Bomholt.PetShop.UI
             _petService = petService;
         }
 
+        public void DeletePetById()
+        {
+            int petId;
+            Console.Write("\nType the id of the pet to delete: ");
+            while (!int.TryParse(Console.ReadLine(), out petId))
+            {
+                Console.WriteLine("A number please!");
+            }
+            bool Succes = _petService.DeletePetById(petId);
+            if (Succes)
+            {
+                Console.WriteLine("\nThe Pet was successfully deleted!");
+            }
+            else
+            {
+                Console.WriteLine("\nNo Pet with that id found!");
+            }
+            
+        }
+
         public void Exit()
         {
             Console.Clear();

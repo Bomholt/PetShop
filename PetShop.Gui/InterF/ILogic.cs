@@ -9,5 +9,6 @@ namespace Bomholt.PetShop.UI.InterF
     {
         void ShowAllPests();
         void Exit();
+        void DeletePetById();
     }
 }

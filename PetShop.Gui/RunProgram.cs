@@ -34,6 +34,7 @@ namespace Bomholt.PetShop.UI
                         break;
                     case 4:
                         Console.WriteLine("You chose: Delete Pet");
+                        _logic.DeletePetById();
                         break;
                     case 5:
                         Console.WriteLine("You chose: Update a Pet");

@@ -9,5 +9,6 @@ namespace Bomholt.PetShop.Core.DomainService
     public interface IPetRepository
     {
         IEnumerable<Pet> GetAllPets();
+        bool DeletePetById(int v);
     }
 }

@@ -27,5 +27,27 @@ namespace Bomholt.Petshop.Infrastructure.Data.Repositories
             
             return _pets;
         }
+
+        public bool DeletePetById(int v)
+        {
+            bool success = false;
+            var tempList = _pets.ToList();
+            Pet DelPet = null;
+            foreach (var item in tempList)
+            {
+                if (item.ID == v)
+                {
+                    DelPet = item;
+                    success = true;
+                }
+            }
+            if (DelPet != null)
+            {
+                tempList.Remove(DelPet);
+            }
+            
+            _pets = tempList;
+            return success;
+        }
     }
 }
