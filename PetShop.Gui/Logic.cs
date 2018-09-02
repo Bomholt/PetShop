@@ -3,6 +3,7 @@ using Bomholt.PetShop.Core.Entities;
 using Bomholt.PetShop.UI.InterF;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading;
 
@@ -123,14 +124,16 @@ namespace Bomholt.PetShop.UI
         private void PrintListOfPets(List<Pet> list)
         {
             Console.WriteLine("\nPESTS:\n");
-            Console.WriteLine(" | {0}| {1}| {2}| {3}| {4}| {5}| {6}| {7}| ", "ID", "NAME", "TYPE", "COLOR", "BIRTHDATE", "SOLDDATE", "PREVIOUSOWNER", "PRICE");
-            //Console.WriteLine("| {0,-20}| {1,-10}| {2,2}|", "NAME", "COLOR", "ID");
-            //Console.WriteLine("+---------------------+-----------+---+");
+            Console.WriteLine("| {0,-2}| {1,-10}| {2,-10}| {3,-10}| {4,-10}| {5,-10}| {6,-20}| {7,-14}| ", 
+                "ID", "NAME", "TYPE", "COLOR", "BIRTHDATE", "SOLDDATE", "PREVIOUSOWNER", "PRICE");
+            Console.WriteLine("+---+-----------+-----------+-----------+-----------+-----------+---------------------+---------------+");
             foreach (var item in list)
             {
-                Console.WriteLine("| {0}| {1}| {2}| {3}| {4}| {5}| {6}| {7}|", item.ID, item.Name, item.Type, item.Color, item.Birthdate, item.Solddate, item.PreviousOwner, item.Price);
-                //Console.WriteLine("| {0,-20}| {1,-10}| {2,2}|", item.Name, item.Color, item.ID);
-                //Console.WriteLine("+---------------------+-----------+---+");
+                Console.WriteLine("| {0,2}| {1,-10}| {2,-10}| {3,-10}| {4,10}| {5,10}| {6,-20}| {7,14}|", 
+                    item.ID, item.Name, item.Type, item.Color, item.Birthdate.ToShortDateString() , item.Solddate.ToShortDateString(), 
+                    item.PreviousOwner, item.Price.ToString("C2",CultureInfo.CreateSpecificCulture("da-DK")));
+                Console.WriteLine("+---+-----------+-----------+-----------+-----------+-----------+---------------------+---------------+");
+
             }
         }
 
