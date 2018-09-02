@@ -173,5 +173,12 @@ namespace Bomholt.PetShop.UI
             List<Pet> ByPrice = _petService.SortPetsByPrice();
             PrintListOfPets(ByPrice);
         }
+
+        public void Get5CheapestPets()
+        {
+            Console.WriteLine("You chose: Get 5 cheapest available Pets");
+            List<Pet> FiveCheapest = _petService.Get5CheapestPets();
+            PrintListOfPets(FiveCheapest);
+        }
     }
 }

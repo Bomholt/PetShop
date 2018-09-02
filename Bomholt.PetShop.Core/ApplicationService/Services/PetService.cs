@@ -24,6 +24,12 @@ namespace Bomholt.PetShop.Core.ApplicationService.Services
             return _PetRepo.DeletePetById(v);
         }
 
+        public List<Pet> Get5CheapestPets()
+        {
+            IEnumerable<Pet> AllPets = _PetRepo.GetAllPets();
+            return AllPets.OrderBy(pet => pet.Price).Take(5).ToList();
+        }
+
         public List<Pet> GetAllPets()
         {
             return _PetRepo.GetAllPets().ToList();
@@ -33,7 +39,6 @@ namespace Bomholt.PetShop.Core.ApplicationService.Services
         {
             IEnumerable <Pet> AllPets = _PetRepo.GetAllPets();
             return AllPets.Where(pet => pet.Type.Equals(searchType)).ToList();
-            //return AllPets.ToList();
         }
 
         public List<Pet> SortPetsByPrice()

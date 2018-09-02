@@ -15,5 +15,6 @@ namespace Bomholt.PetShop.UI.InterF
         void UpdatePet();
         void SearchPetsByType();
         void SortPetsByPrice();
+        void Get5CheapestPets();
     }
 }
